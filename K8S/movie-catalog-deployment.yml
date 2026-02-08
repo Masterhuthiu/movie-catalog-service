@@ -1,8 +1,25 @@
+# K8S/movie-catalog-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-catalog-service
 spec:
-  containers:
-    - name: movie-app
-      image: quay.io/your-username/movie-catalog-service:v1
-      env:
-        - name: SPRING_DATA_MONGODB_URI
-          # 'mongodb' ở đây chính là tên Service bạn đã apply từ file mongodb-k8s.yml
-          value: "mongodb://mongodb:27017/movieCatalogService"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-catalog-service
+  template:
+    metadata:
+      labels:
+        app: movie-catalog-service
+    spec:
+      containers:
+        - name: movie-app
+          # THAY THẾ bằng tên Docker Hub của bạn
+          image: masterhuthiu/movie-catalog-service:latest
+          imagePullPolicy: Always # Ép K8s luôn kéo bản mới nhất từ Docker Hub
+          env:
+            - name: SPRING_DATA_MONGODB_URI
+              value: "mongodb://mongodb:27017/movieCatalogService"
+            - name: SPRING_CLOUD_CONSUL_ENABLED
+              value: "false" # Tắt Consul vì đã có K8s DNS
