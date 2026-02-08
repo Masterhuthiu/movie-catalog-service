@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "src/main/java/com/mycompany/myapp/service/dto",
+        "src/main/java/com/mycompany/myapp/service"
+    ]
+}

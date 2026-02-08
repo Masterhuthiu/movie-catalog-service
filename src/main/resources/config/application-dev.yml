@@ -9,6 +9,7 @@
 
 # ===================================================================
 # Standard Spring Boot properties.
+# Standard Spring Boot properties.
 # Full reference is available at:
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
@@ -54,8 +55,12 @@ spring:
           - git-branch=${git.branch:}
       host: localhost
       port: 8500
+  docker:
+    compose:
+      enabled: false  # Thêm dòng này vào để bỏ qua kiểm tra Docker
   data:
     mongodb:
+
       uri: mongodb://localhost:27017/movieCatalogService
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
@@ -91,7 +96,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: OWRhYzBmMTAwYmFlYzNmYTg5OWY4ZjBhZGIxYjNkMjk4YTE0YjFjMjgwY2Q0ZTY5ZWVlMjc4MWI4MGYwMDY0NWFiOGQzZjNkYjU0YzU2MGYzN2QwOWJhNWU3OTJiOWM4YmI5NWZiNGExMDE1ZWFmOTBhNjBlOWRiOGYyOTk5YjM=
+        base64-secret: NTcxOWI0NWJhZjMwMTJhZjkyNTkyOWQxYmVjZDE0NDdjM2FhZjEzMTEzNGI3NzNmMGRmMzAzOTI5ZDBkMDQxYzU0ZjU1ZGUxOThjZWVkNTg3OGI5MmExNTMyMGM2OTMyZjc3NGQzNjJmMjZjMjhmYmYxMWRlODhlZjllY2E4NmI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

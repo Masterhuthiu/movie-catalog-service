@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// eslint-disable-line
+import { Translate } from 'react-jhipster'; // eslint-disable-line
 
 import MenuItem from 'app/shared/layout/menus/menu-item'; // eslint-disable-line
 import { addTranslationSourcePrefix } from 'app/shared/reducers/locale';
@@ -15,6 +15,9 @@ const EntitiesMenu = () => {
   return (
     <>
       {/* prettier-ignore */}
+      <MenuItem icon="asterisk" to="/movie-catalog/movie">
+        <Translate contentKey="global.menu.entities.movieCatalogMovie" />
+      </MenuItem>
       {/* jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here */}
     </>
   );

@@ -115,9 +115,9 @@ spring:
           enabled: false
   docker:
     compose:
-      enabled: true
-      lifecycle-management: start-only
-      file: src/main/docker/mongodb.yml
+      enabled: false
+      #lifecycle-management: start-only
+      #file: src/main/docker/mongodb.yml
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -169,6 +169,7 @@ server:
 
 springdoc:
   show-actuator: true
+
 
 # Properties to be exposed on the /info management endpoint
 info:

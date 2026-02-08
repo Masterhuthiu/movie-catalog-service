@@ -3,7 +3,7 @@ name: moviecatalogservice
 services:
   mongodb:
     extends:
-      file: ./mongodb.yml
+      file: mongodb.yml
       service: mongodb
   consul:
     extends:

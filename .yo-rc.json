@@ -8,15 +8,17 @@
     "clientFramework": "react",
     "clientTestFrameworks": [],
     "clientTheme": "none",
-    "creationTimestamp": 1769838502838,
+    "creationTimestamp": 1769910232566,
     "databaseType": "mongodb",
     "devDatabaseType": null,
     "enableHibernateCache": null,
-    "enableTranslation": false,
-    "entities": [],
+    "enableTranslation": true,
+    "entities": ["Movie"],
     "feignClient": true,
     "jhipsterVersion": "8.11.0",
-    "jwtSecretKey": "OWRhYzBmMTAwYmFlYzNmYTg5OWY4ZjBhZGIxYjNkMjk4YTE0YjFjMjgwY2Q0ZTY5ZWVlMjc4MWI4MGYwMDY0NWFiOGQzZjNkYjU0YzU2MGYzN2QwOWJhNWU3OTJiOWM4YmI5NWZiNGExMDE1ZWFmOTBhNjBlOWRiOGYyOTk5YjM=",
+    "jwtSecretKey": "MDI3ZGZhOTU5ODJkMTZkNzliMWM5M2U3OWQ0NzkwMTA2ODQxYjBkM2EyZGMwODRhZGQ5ZTFlMWQyNmNjNjMyNGMzYTJiMTM1MmMzOGVmYTQ5MzY5MDk2YTRkMzQ0ZWE4YzNmZGY5YTdmYmU1MTJhMTA2YjEzNzg0MTVhNjVhYTY=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1769920365000,
     "microfrontend": null,
     "microfrontends": [],
     "nativeLanguage": "en",
@@ -25,8 +27,9 @@
     "reactive": false,
     "serverPort": 8081,
     "serviceDiscoveryType": "consul",
+    "skipUserManagement": true,
     "syncUserWithIdp": null,
     "testFrameworks": [],
-    "withAdminUi": true
+    "withAdminUi": false
   }
 }

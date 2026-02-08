@@ -1,1 +1,203 @@
-Movie-catalog with Spring Data MongoDB
+= PART I:
+= Movie Catalog Microservice
+:toc:
+:toclevels: 2
+
+The *Movie Catalog Microservice* is built on **Spring Boot 3** and **JHipster 8**, optimized for a modern *Microservices architecture*.
+
+== 🚀 Project Overview
+
+This service acts as a **core component** in a Microservices ecosystem, responsible for managing movie data sourced from the `sample_mflix` collection on **MongoDB Atlas**.
+It is designed with **enterprise-grade standards** in mind.
+
+=== Key Features
+
+- *Movie Management*:
+Full CRUD operations with **Partial Update (PATCH)** support for efficient data updates.
+
+- *Service Discovery*:
+Dynamic service registration and lookup using **Consul**.
+
+- *Database Migration*:
+Automated schema versioning and migration powered by **Mongock**.
+
+- *Observability*:
+Integrated **Prometheus metrics** and **Zipkin distributed tracing** for performance monitoring and diagnostics.
+
+- *Resilience*:
+Uses **Feign Client** with **Circuit Breaker patterns** to prevent cascading failures in distributed systems.
+
+---
+
+== 🛠 Tech Stack
+
+[cols="1,2"]
+|===
+| Component | Technology
+
+| Framework
+| Spring Boot 3.x, JHipster 8
+
+| Language
+| Java 17
+
+| Database
+| MongoDB Atlas (Cloud NoSQL) / MongooDB local(podman/docker)
+
+| Service Discovery
+| Spring Cloud Consul
+
+| Monitoring
+| Micrometer, Prometheus, Grafana
+
+| Security
+| OAuth2, JWT
+|===
+
+---
+
+== 🏗 System Architecture
+
+The service operates as a **stateless component** connecting directly to a **MongoDB Atlas cluster**.
+
+- *Web Layer*:
+REST Controllers exposing APIs to external clients.
+
+- *Service Layer*:
+`MovieService` encapsulates business logic and optimized object mapping.
+
+- *Data Layer*:
+`MovieRepository` extends `MongoRepository` for seamless interaction with MongoDB Atlas.
+
+---
+
+== ⚙️ Configuration and Setup
+
+=== 1. System Requirements
+
+- Java 17+
+- Docker (for running Consul and Zipkin locally)
+
+Start infrastructure services:
+
+[source,bash]
+----
+docker compose -f src/main/docker/consul.yml up
+Or
+podman compose -f src/main/docker/consul.yml up
+----
+
+---
+
+=== 2. Critical Environment Variables
+
+Development configuration is defined in `application-dev.yml`.
+
+Key settings include:
+
+- *MongoDB URI*:
+Connection string to **Cluster0** on MongoDB Atlas.
+
+- *Server Port*:
+`8081`
+
+- *JWT Secret*:
+Base64-encoded secret for enhanced authentication security.
+
+---
+
+=== 3. Run the Application
+
+[source,bash]
+----
+./mvnw
+----
+
+---
+
+== 📊 Monitoring and API Documentation
+
+- *Health Check Endpoint*:
+http://localhost:8081/management/health
+
+This endpoint verifies:
+
+- Application status
+- Database connectivity
+- Overall service health
+
+---
+
+== 💡 Technical Highlights & Problem Solving
+
+During development, several technical challenges were addressed:
+
+- *Hazelcast vs DevTools Conflict*:
+Disabled Spring DevTools automatic restart to avoid conflicts with **Hazelcast caching**.
+
+- *Fluent API Domain Model*:
+Implemented a **Fluent API style** for domain objects, improving unit testing readability and object construction.
+
+- *CORS & Security Hardening*:
+Configured a strict **Content Security Policy (CSP)** to mitigate **XSS (Cross-Site Scripting)** vulnerabilities.
+
+---
+
+== 📌 Summary
+
+This microservice demonstrates:
+
+- Production-ready **Spring Boot microservice design**
+- Secure **OAuth2/JWT authentication**
+- Cloud-native **MongoDB Atlas integration**
+- Full **observability and resilience patterns**
+- Compatibility with **Docker, Kubernetes, and OpenShift**
+
+➡️ Suitable as a **backend portfolio project** for *Java Backend / Microservices / Cloud / DevOps roles*.
+
+= PART II:
+== ☸️ Kubernetes & OpenShift (MicroShift) Deployment
+
+Beyond local containers, this service is fully architected for **Cloud-Native orchestration** on Kubernetes and OpenShift.
+
+=== 1. Containerization & Image Management
+The application is packaged as a lightweight OCI-compliant image and hosted on an enterprise registry.
+
+[source,bash]
+----
+# Build and Push image to Quay.io
+./mvnw -Pprod verify jib:build -Djib.to.image=quay.io/your-username/movie-catalog-service:v1
+----
+
+=== 2. Infrastructure as Code (IaC) - K8s Manifests
+I have developed custom Kubernetes manifests to manage the deployment lifecycle, including:
+
+- **Deployment**: Configured with `RollingUpdate` strategy and resource limits.
+- **Service**: Internal Cluster-IP for zero-config service discovery.
+- **Environment Injection**: Decoupling configuration from code using K8s environment variables.
+
+[source,yaml]
+----
+# Strategic configuration for MongoDB connectivity in K8s
+containers:
+- name: movie-app
+  image: quay.io/your-username/movie-catalog-service:v1
+  env:
+  - name: SPRING_DATA_MONGODB_URI
+    value: "mongodb://mongodb.default.svc.cluster.local:27017/movieCatalogService"
+----
+
+=== 3. Deployment Workflow on MicroShift
+The service is deployed using `oc` (OpenShift CLI), ensuring seamless integration with the cluster's internal networking.
+
+[source,powershell]
+----
+# Apply backend manifests
+oc apply -f K8S/movie-catalog-deployment.yml -n default
+
+# Verify connectivity with the MongoDB Pod
+oc logs -f deployment/movie-catalog-service -n default | grep "Connected to MongoDB"
+----
+
+=== 4. Service Discovery: K8s DNS vs. Consul
+While the application supports **Consul** for service discovery in hybrid environments, it is optimized to use **Kubernetes Native Service Discovery (Kube-DNS)** when deployed in the cluster. This reduces architectural overhead by utilizing the cluster's built-in DNS resolution.

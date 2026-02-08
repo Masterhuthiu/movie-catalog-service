@@ -9,6 +9,7 @@ import getStore from 'app/config/store';
 
 import entitiesReducers from './reducers';
 
+import Movie from './movie-catalog/movie';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 export default () => {
@@ -18,6 +19,7 @@ export default () => {
     <div>
       <ErrorBoundaryRoutes>
         {/* prettier-ignore */}
+        <Route path="/movie/*" element={<Movie />} />
         {/* jhipster-needle-add-route-path - JHipster will add routes here */}
       </ErrorBoundaryRoutes>
     </div>

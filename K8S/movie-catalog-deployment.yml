@@ -1,0 +1,8 @@
+spec:
+  containers:
+    - name: movie-app
+      image: quay.io/your-username/movie-catalog-service:v1
+      env:
+        - name: SPRING_DATA_MONGODB_URI
+          # 'mongodb' ở đây chính là tên Service bạn đã apply từ file mongodb-k8s.yml
+          value: "mongodb://mongodb:27017/movieCatalogService"

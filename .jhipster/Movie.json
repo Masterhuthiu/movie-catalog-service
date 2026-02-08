@@ -1,0 +1,69 @@
+{
+  "annotations": {
+    "changelogDate": "20260201043245"
+  },
+  "applications": "*",
+  "clientRootFolder": "movie-catalog",
+  "databaseType": "mongodb",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "plot",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fullplot",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "runtime",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rated",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "released",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "genres",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cast",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "languages",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "poster",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imdbRating",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "imdbVotes",
+      "fieldType": "Integer"
+    }
+  ],
+  "microserviceName": "movie-catalog",
+  "name": "Movie",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

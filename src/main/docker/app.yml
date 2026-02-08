@@ -9,7 +9,7 @@ services:
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - SPRING_CLOUD_CONSUL_HOST=consul
       - SPRING_CLOUD_CONSUL_PORT=8500
-      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/movieCatalogService
+      - SPRING_DATA_MONGODB_URI=mongodb://localhost:27017/movieCatalogService
     healthcheck:
       test:
         - CMD
@@ -19,13 +19,13 @@ services:
       interval: 5s
       timeout: 5s
       retries: 40
-    depends_on:
-      mongodb:
-        condition: service_healthy
-  mongodb:
-    extends:
-      file: ./mongodb.yml
-      service: mongodb
+#    depends_on:
+#      mongodb:
+#        condition: service_healthy
+#  mongodb:
+#    extends:
+#      file: mongodb.yml
+#      service: mongodb
   consul:
     extends:
       file: ./consul.yml

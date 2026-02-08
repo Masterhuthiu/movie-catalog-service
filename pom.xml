@@ -80,6 +80,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>tech.jhipster</groupId>
+                <artifactId>jhipster-dependencies</artifactId>
+                <version>8.11.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
@@ -289,6 +296,11 @@
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -603,7 +615,7 @@
                         </execution>
                     </executions>
                 </plugin>
-                <plugin>
+                <!-- <plugin>
                     <groupId>com.github.eirslett</groupId>
                     <artifactId>frontend-maven-plugin</artifactId>
                     <version>${frontend-maven-plugin.version}</version>
@@ -612,7 +624,7 @@
                         <nodeVersion>${node.version}</nodeVersion>
                         <npmVersion>${npm.version}</npmVersion>
                     </configuration>
-                </plugin>
+                </plugin> -->
                 <plugin>
                     <groupId>com.google.cloud.tools</groupId>
                     <artifactId>jib-maven-plugin</artifactId>
@@ -858,7 +870,7 @@
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
-                                            <pluginExecutionFilter>
+                                            <!-- <pluginExecutionFilter>
                                                 <groupId>com.github.eirslett</groupId>
                                                 <artifactId>frontend-maven-plugin</artifactId>
                                                 <versionRange>${frontend-maven-plugin.version}</versionRange>
@@ -866,7 +878,7 @@
                                                     <goal>install-node-and-npm</goal>
                                                     <goal>npm</goal>
                                                 </goals>
-                                            </pluginExecutionFilter>
+                                            </pluginExecutionFilter> -->
                                             <action>
                                                 <ignore/>
                                             </action>
@@ -918,7 +930,7 @@
                         <groupId>io.github.git-commit-id</groupId>
                         <artifactId>git-commit-id-maven-plugin</artifactId>
                     </plugin>
-                    <plugin>
+                    <!-- <plugin>
                         <groupId>com.github.eirslett</groupId>
                         <artifactId>frontend-maven-plugin</artifactId>
                         <executions>
@@ -960,7 +972,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin> -->
                 </plugins>
             </build>
         </profile>
@@ -1068,7 +1080,7 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
+                    <!-- <plugin>
                         <groupId>com.github.eirslett</groupId>
                         <artifactId>frontend-maven-plugin</artifactId>
                         <executions>
@@ -1099,7 +1111,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin> -->
                 </plugins>
             </build>
         </profile>

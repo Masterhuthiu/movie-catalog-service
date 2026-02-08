@@ -1,0 +1,22 @@
+entity Movie {
+  title String required,
+  plot String,
+  fullplot String,
+  year Integer,
+  runtime Integer,
+  rated String,
+  released Instant,
+
+  genres String,
+  cast String,
+  languages String,
+
+  poster String,
+
+  imdbRating Double,
+  imdbVotes Integer
+}
+
+microservice Movie with movie-catalog
+paginate Movie with pagination
+service Movie with serviceClass

@@ -45,7 +45,7 @@ spring:
       port: 8500
   data:
     mongodb:
-      uri: mongodb://localhost:27017/movieCatalogService
+      uri: mongodb+srv://masterhuthiu:123456a%40A@cluster0.3jl7a.mongodb.net/sample_mflix?retryWrites=true&w=majority
   thymeleaf:
     cache: true
 
@@ -98,7 +98,7 @@ jhipster:
         # - In the Consul configserver
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: OWRhYzBmMTAwYmFlYzNmYTg5OWY4ZjBhZGIxYjNkMjk4YTE0YjFjMjgwY2Q0ZTY5ZWVlMjc4MWI4MGYwMDY0NWFiOGQzZjNkYjU0YzU2MGYzN2QwOWJhNWU3OTJiOWM4YmI5NWZiNGExMDE1ZWFmOTBhNjBlOWRiOGYyOTk5YjM=
+        base64-secret: MDI3ZGZhOTU5ODJkMTZkNzliMWM5M2U3OWQ0NzkwMTA2ODQxYjBkM2EyZGMwODRhZGQ5ZTFlMWQyNmNjNjMyNGMzYTJiMTM1MmMzOGVmYTQ5MzY5MDk2YTRkMzQ0ZWE4YzNmZGY5YTdmYmU1MTJhMTA2YjEzNzg0MTVhNjVhYTY=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
